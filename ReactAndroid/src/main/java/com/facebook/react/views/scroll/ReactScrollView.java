@@ -302,14 +302,14 @@ public class ReactScrollView extends ScrollView implements ReactClippingViewGrou
       // animating. Because we give essentially no max Y for the fling, the fling will continue as long
       // as there is content. See #onOverScrolled() to see the second part of this change which properly
       // aborts the scroller animation when we get to the bottom of the ScrollView content.
-
+      final int correctedVelocityY = (int)(Math.abs(velocityY) * Math.signum(mOnScrollDispatchHelper.getYFlingVelocity()));
       int scrollWindowHeight = getHeight() - getPaddingBottom() - getPaddingTop();
 
       mScroller.fling(
         getScrollX(), // startX
         getScrollY(), // startY
         0, // velocityX
-        velocityY, // velocityY
+        correctedVelocityY, // velocityY
         0, // minX
         0, // maxX
         0, // minY
@@ -322,9 +322,9 @@ public class ReactScrollView extends ScrollView implements ReactClippingViewGrou
 
       // END FB SCROLLVIEW CHANGE
     } else {
-      super.fling(velocityY);
+      super.fling(correctedVelocityY);
     }
-    handlePostTouchScrolling(0, velocityY);
+    handlePostTouchScrolling(0, correctedVelocityY);
   }
 
   private void enableFpsListener() {
