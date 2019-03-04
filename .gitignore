@@ -20,7 +20,15 @@ DerivedData
 *.ipa
 *.xcuserstate
 project.xcworkspace
-
+android/local.properties
+android/.settings
+android/app/app.iml
+android/Velocity.iml
+android/app/.project
+android/.project
+android/app/.classpath
+android/app/bin
+android/app/.settings
 # Gradle
 /build/
 /RNTester/android/app/build/
