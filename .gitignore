@@ -29,6 +29,7 @@ android/.project
 android/app/.classpath
 android/app/bin
 android/app/.settings
+ReactAndroid/bin/
 # Gradle
 /build/
 /RNTester/android/app/build/
